@@ -12,6 +12,30 @@ Product requirements live in `docs/aigit.adoc`.
 - Answer the prompts (end each answer with a line containing just `.`)
 - (Optional) Verify later: `aigit verify HEAD`
 
+## AEROSPACEMODEL open contributions
+
+When contributing to AEROSPACEMODEL, use aigit to attach a Proof-of-Understanding transcript that maintainers can verify.
+
+**Contributor flow**
+
+- Install `aigit` (see Install section below).
+- Ensure the repo has a policy (example):
+
+  ```toml
+  provider = "local"
+  exam_mode = "tui"
+  store = "git-notes"
+  ```
+
+- Make and stage changes, then commit with `aigit commit -m "message"`.
+- Push the transcript notes so maintainers can verify:
+  `git push origin refs/notes/aigit`
+
+**Maintainer/CI flow**
+
+- Verify a contribution with `aigit verify <commit-ish>`.
+- In CI, run `aigit verify $GITHUB_SHA` (and fetch notes if needed) to enforce PoU on pull requests.
+
 ## Architecture
 
 ### Key definitions
