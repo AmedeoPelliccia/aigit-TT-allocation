@@ -19,7 +19,7 @@ When contributing to AEROSPACEMODEL, use aigit to attach a Proof-of-Understandin
 **Contributor flow**
 
 - Install `aigit` (see Install section below).
-- Ensure the repo has a policy (example):
+- Ensure the repo has a policy file at `.aigit.toml`. If it is missing, create one for local use or ask maintainers for the expected defaults (example):
 
   ```toml
   provider = "local"
@@ -28,13 +28,14 @@ When contributing to AEROSPACEMODEL, use aigit to attach a Proof-of-Understandin
   ```
 
 - Make and stage changes, then commit with `aigit commit -m "message"`.
-- Push the transcript notes so maintainers can verify:
+- Push the transcript notes so maintainers can verify (replace `origin` with your remote name):
   `git push origin refs/notes/aigit`
 
 **Maintainer/CI flow**
 
 - Verify a contribution with `aigit verify <commit-ish>`.
-- In CI, run `aigit verify $GITHUB_SHA` (and fetch notes if needed) to enforce PoU on pull requests.
+- In CI, fetch notes and run `aigit verify $GITHUB_SHA` to enforce PoU on pull requests:
+  `git fetch origin refs/notes/aigit:refs/notes/aigit`
 
 ## Architecture
 
